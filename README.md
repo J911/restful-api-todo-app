@@ -1,5 +1,5 @@
 # RESTful-todo-app
-RESTFul Todo App 
+RESTful Todo App 
 
 ## Project
 project name : RESTFul Todo App 
