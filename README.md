@@ -9,34 +9,40 @@ start project: 2018.08.02
 ## Directory Sturcture
 ```
 .
-├── assets
-├── components
-│   └── shared-components
-├── config
-│   └── router.js
-├── environments
-│   └── environments.json
-├── service
-│   ├── account.service.js
-│   ├── http.service.js
-│   └── websocket.service.js
-├── spa
-│   ├── auth
-│   │   ├── sign-in.vue
-│   │   └── sign-up.vue
-│   └── home.vue
-├── store
-│   ├── action-type.js
-│   ├── actions.js
-│   ├── index.js
-│   ├── mutation-types.js
-│   ├── mutations.js
-│   └── state.js
-└── style
-    ├── components
-    │   └── shared-components
-    └── spa
-        └── home.css
+├── docs
+│   └── api-document.md
+├── src
+├── todo-backend
+└── todo-frontend
+    ├── README.md
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── src
+    │   ├── app.vue
+    │   ├── assets
+    │   │   └── image
+    │   ├── components
+    │   │   └── shared-components
+    │   │       ├── footer.component.vue
+    │   │       └── nav.component.vue
+    │   ├── config
+    │   │   └── router.ts
+    │   ├── environments
+    │   │   └── environments.json
+    │   ├── main.ts
+    │   ├── service
+    │   │   └── http.service.ts
+    │   ├── spa
+    │   │   └── home.vue
+    │   ├── style
+    │   │   ├── components
+    │   │   │   └── shared-components
+    │   │   └── spa
+    │   │       └── home.css
+    │   └── vue-shim.d.ts
+    ├── tsconfig.json
+    └── tslint.json
 ```
 
 ## Stack
