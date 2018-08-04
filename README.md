@@ -54,8 +54,10 @@ backend
 - express
 - monodb
 - jwt
+- typescript
 
 frontend
 - vuejs
 - vuex
 - vue-router
+- typescript
