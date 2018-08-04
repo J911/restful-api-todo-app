@@ -1,8 +1,8 @@
-import RouterBase from '../router.base'
+import RouterAbstract from '../RouterAbstract'
 import * as AuthCtrl from './auth.ctrl'
 
-class Auth extends RouterBase {
-    
+class Auth extends RouterAbstract {
+
     constructor () {
         super();
         this.routes();

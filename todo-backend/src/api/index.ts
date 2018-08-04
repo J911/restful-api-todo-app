@@ -1,10 +1,10 @@
-import RouterBase from './router.base'
+import RouterAbstract from './RouterAbstract'
 
 import Auth from './auth'
-import Account from './Account'
+import Account from './account'
 import Todo from './todo'
 
-class Api extends RouterBase {
+class Api extends RouterAbstract {
 
     constructor () {
         super();

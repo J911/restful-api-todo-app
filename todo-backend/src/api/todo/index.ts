@@ -1,7 +1,7 @@
-import RouterBase from '../router.base'
+import RouterAbstract from '../RouterAbstract'
 
-class Account extends RouterBase {
-    
+class Account extends RouterAbstract {
+
     constructor () {
         super();
         this.routes();
