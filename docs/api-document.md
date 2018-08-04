@@ -2,7 +2,6 @@
 Todo App의 API 명세
 
 ## Auth
----
 
 ### Sign In
 로그인을 통해 JWT 인증토큰을 받아온다.
@@ -22,7 +21,6 @@ Todo App의 API 명세
 - status: 201, 500, 409
 
 ## Accounts
----
 
 ### Get UserName
 사용자 정보를 가져운다.
@@ -61,7 +59,6 @@ Todo App의 API 명세
 - status: 204, 400, 401, 403, 500
 
 ## Todo
----
 
 ### Generate Todo
 새로운 Todo를 등록한다.
