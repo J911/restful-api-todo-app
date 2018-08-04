@@ -16,7 +16,7 @@ export default class App {
         this.listen();
     }
 
-    private config():void {
+    private config(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
     }
