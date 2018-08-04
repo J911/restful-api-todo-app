@@ -2,7 +2,7 @@
 RESTful Todo App 
 
 ## Project
-project name : RESTFul Todo App 
+project name : RESTful Todo App 
 
 start project: 2018.08.02
 
