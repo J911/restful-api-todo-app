@@ -1,4 +1,4 @@
-import RouterAbstract from '../RouterAbstract'
+import RouterAbstract from '../../RouterAbstract'
 
 class Account extends RouterAbstract {
 

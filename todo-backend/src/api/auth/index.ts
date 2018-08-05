@@ -1,4 +1,4 @@
-import RouterAbstract from '../RouterAbstract'
+import RouterAbstract from '../../RouterAbstract'
 import * as AuthCtrl from './auth.ctrl'
 
 class Auth extends RouterAbstract {

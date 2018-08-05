@@ -1,4 +1,4 @@
-import RouterAbstract from './RouterAbstract'
+import RouterAbstract from '../RouterAbstract'
 
 import Auth from './auth'
 import Account from './account'

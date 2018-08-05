@@ -1,6 +1,8 @@
 import * as express from 'express'
 import * as bodyParser from "body-parser"
+
 import Api from './api'
+import Middleware from './middleware'
 
 export default class App {
 
@@ -12,6 +14,7 @@ export default class App {
         this.app = express();
 
         this.config();
+        this.middleware();
         this.api();
         this.listen();
     }
@@ -19,6 +22,10 @@ export default class App {
     private config(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
+    }
+
+    private middleware(): void {
+        this.app.use('/api/v1', Middleware.route);
     }
 
     private api(): void {
