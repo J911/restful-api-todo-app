@@ -99,7 +99,7 @@ Todo App의 API 명세
 ### Update Todo Contents
 사용자의 Todo의 내용을 수정한다.
 
-- uri: /api/v1/todos/${todoId}/title
+- uri: /api/v1/todos/${todoId}/contents
 - method: PUT
 - request header: x-access-token
 - request: contents
