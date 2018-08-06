@@ -3,7 +3,10 @@ import * as AuthCtrl from './auth-controller'
 
 class Auth extends RouterAbstract {
 
+    private static instance = new Auth();
+
     constructor () {
+        if (!!Auth.instance) return Auth.instance;
         super();
         this.setRoutes();
     }
