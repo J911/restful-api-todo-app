@@ -6,7 +6,7 @@ project name : RESTful Todo App
 
 start project: 2018.08.02
 
-## RESTful
+## RESTful API document
 [api-document](https://github.com/J911/RESTful-todo-app/blob/master/docs/api-document.md)
 
 ## Stack
