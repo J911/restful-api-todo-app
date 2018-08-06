@@ -1,5 +1,5 @@
-import RouterAbstract from '../../RouterAbstract'
-import * as AuthCtrl from './auth.ctrl'
+import RouterAbstract from '../../router-abstract'
+import * as AuthCtrl from './auth-controller'
 
 class Auth extends RouterAbstract {
 

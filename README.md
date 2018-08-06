@@ -21,11 +21,11 @@ start project: 2018.08.02
 │   ├── package.json
 │   ├── src
 │   │   ├── api
-│   │   │   ├── RouterAbstract.ts
+│   │   │   ├── router-abstract.ts
 │   │   │   ├── account
 │   │   │   │   └── index.ts
 │   │   │   ├── auth
-│   │   │   │   ├── auth.ctrl.ts
+│   │   │   │   ├── auth-controller.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── index.ts
 │   │   │   └── todo

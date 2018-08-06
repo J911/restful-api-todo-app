@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken'
-import jwtConfig from '../config/jwt.config'
+import jwtConfig from '../config/jwt-config'
 
 export const tokenValidationCheck = (req: Request, res: Response, next: NextFunction): void => {
     var token = req.headers['x-access-token'];
