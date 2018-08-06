@@ -8,10 +8,10 @@ class Api extends RouterAbstract {
 
     constructor () {
         super();
-        this.routes();
+        this.setRoutes();
     }
 
-    private routes(): void {
+    private setRoutes(): void {
         this.router.use('/auth', Auth.route);
         this.router.use('/account', Account.route);
         this.router.use('/auth', Todo.route);

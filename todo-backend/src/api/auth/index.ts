@@ -5,10 +5,10 @@ class Auth extends RouterAbstract {
 
     constructor () {
         super();
-        this.routes();
+        this.setRoutes();
     }
 
-    private routes(): void {
+    private setRoutes(): void {
         this.router.post('/signin', AuthCtrl.signin);
         this.router.post('/signup', AuthCtrl.signup);
     }

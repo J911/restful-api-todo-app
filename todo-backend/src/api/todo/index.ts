@@ -4,10 +4,10 @@ class Account extends RouterAbstract {
 
     constructor () {
         super();
-        this.routes();
+        this.setRoutes();
     }
 
-    private routes(): void {
+    private setRoutes(): void {
        
     }
     

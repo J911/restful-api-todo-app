@@ -13,22 +13,18 @@ export default class App {
         this.port = port || 3000;
         this.app = express();
 
-        this.config();
-        this.middleware();
-        this.api();
+        this.setMiddleware();
+        this.setApi();
         this.listen();
     }
 
-    private config(): void {
+    private setMiddleware(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
-    }
-
-    private middleware(): void {
         this.app.use('/api/v1', Middleware.route);
     }
 
-    private api(): void {
+    private setApi(): void {
         this.app.use('/api/v1', Api.route);
     }
 

@@ -6,10 +6,10 @@ class Middleware extends RouterAbstract {
 
     constructor () {
         super();
-        this.routes();
+        this.setRoutes();
     }
 
-    private routes(): void {
+    private setRoutes(): void {
         this.route.use('/accounts', AuthMiddleWare.tokenValidationCheck)
         this.route.use('/todos', AuthMiddleWare.tokenValidationCheck)
     }
