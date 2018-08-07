@@ -1,5 +1,5 @@
 import RouterAbstract from '../../router-abstract'
-import * as AuthCtrl from './auth-controller'
+import AuthController from './auth-controller'
 
 class Auth extends RouterAbstract {
   
@@ -12,8 +12,8 @@ class Auth extends RouterAbstract {
   }
   
   private setRoutes(): void {
-    this.router.post('/signin', AuthCtrl.signin);
-    this.router.post('/signup', AuthCtrl.signup);
+    this.router.post('/sign-in', AuthController.signin.bind(AuthController));
+    this.router.post('/sign-up', AuthController.signup.bind(AuthController));
   }
   
 }
