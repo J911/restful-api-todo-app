@@ -1,6 +1,7 @@
 import {Router} from 'express';
 
-export default abstract class RouterBase {
+export default abstract class RouterAbstract {
+  
   protected router: Router;
   
   get route(): Router {
@@ -10,4 +11,5 @@ export default abstract class RouterBase {
   constructor() {
     this.router = Router();
   }
+  
 }

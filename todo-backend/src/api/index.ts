@@ -1,8 +1,8 @@
 import RouterAbstract from '../router-abstract'
 
-import Auth from './auth'
-import Account from './account'
-import Todo from './todo'
+import AuthRoute from "./auth-route"
+import AccountRoute from "./account-route"
+import TodoRoute from "./todo-route"
 
 class Api extends RouterAbstract {
   
@@ -15,9 +15,9 @@ class Api extends RouterAbstract {
   }
   
   private setRoutes(): void {
-    this.router.use('/auth', Auth.route);
-    this.router.use('/account', Account.route);
-    this.router.use('/auth', Todo.route);
+    this.router.use('/auth', AuthRoute.route);
+    this.router.use('/account', AccountRoute.route);
+    this.router.use('/auth', TodoRoute.route);
   }
   
 }

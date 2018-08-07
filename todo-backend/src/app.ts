@@ -24,6 +24,7 @@ export default class App {
     this.setMiddleware();
     this.setApi();
   }
+  
   private connectDatabase(): void {
     // @ts-ignore: Cannot find name 'process'.
     mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true });
@@ -44,4 +45,5 @@ export default class App {
       console.log("server is running");
     });
   }
+  
 }
