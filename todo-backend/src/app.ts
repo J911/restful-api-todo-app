@@ -7,15 +7,16 @@ import Middleware from './middleware'
 export default class App {
   
   private app: express.Application;
-  private port: number;
+  
+  get application(): express.Application {
+    return this.app;
+  }
   
   constructor(port?: number) {
-    this.port = port || 3000;
     this.app = express();
     
     this.setMiddleware();
     this.setApi();
-    this.listen();
   }
   
   private setMiddleware(): void {
@@ -28,8 +29,8 @@ export default class App {
     this.app.use('/api/v1', Api.route);
   }
   
-  private listen(): void {
-    this.app.listen(this.port, () => {
+  public listen(port: number = 3000): void {
+    this.app.listen(port, () => {
       console.log("server is running");
     });
   }
