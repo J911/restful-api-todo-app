@@ -68,7 +68,7 @@ class AccountRoute extends RouterAbstract {
     const result = await AccountController.validateAccount(name, password);
     if (result.error || result.account === undefined) return res.sendStatus(result.status);
   
-    const remove = await AccountController.removeAccount(name);
+    const remove = await AccountController.removeByName(name);
     if (remove.error) return res.sendStatus(500);
   
     return res.sendStatus(204);

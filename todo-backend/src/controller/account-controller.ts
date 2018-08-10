@@ -34,7 +34,7 @@ class AccountController {
     return { error: false, status: 204 };
   }
   
-  public async removeAccount(name: string): Promise<IResponse> {
+  public async removeByName(name: string): Promise<IResponse> {
     try { await Account.remove({name}) }
     catch (e) { return { error: true, status: 500 } }
     return { error: false, status: 204 };

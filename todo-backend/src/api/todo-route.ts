@@ -24,15 +24,33 @@ class TodoRoute extends RouterAbstract {
   }
   
   private async getTodos(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const accountId = req.body.accountId;
+    
+    const result = await TodoController.findAll(accountId);
+    if (result.error || result.todos === undefined) return res.sendStatus(result.status);
+    
+    return res.status(200).json({ todos: result.todos });
   }
   
   private async getTodoById(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const accountId = req.body.accountId;
+    const todoId = req.params.todoId;
+  
+    const result = await TodoController.findById(todoId, accountId);
+    if (result.error || result.todo === undefined) return res.sendStatus(result.status);
+    if (result.todo === null) return res.sendStatus(404);
+    
+    return res.status(200).json({ todo: result.todo });
   }
   
   private async deleteTodoById(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const accountId = req.body.accountId;
+    const todoId = req.params.todoId;
+
+    const remove = await TodoController.removeById(accountId, todoId);
+    if (remove.error) return res.sendStatus(remove.status);
+  
+    return res.sendStatus(204);
   }
   
   private async createTodo(req: Request, res: Response): Promise<Response> {
