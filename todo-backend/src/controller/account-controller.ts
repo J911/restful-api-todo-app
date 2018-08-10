@@ -34,6 +34,12 @@ class AccountController {
     return { error: false, status: 204 };
   }
   
+  public async removeAccount(name: string): Promise<IResponse> {
+    try { await Account.remove({name}) }
+    catch (e) { return { error: true, status: 500 } }
+    return { error: false, status: 204 };
+  }
+  
   public async validateAccount(name: string, password: string): Promise<IResponse> {
     const result = await this.findByName(name);
     if (result.error || result.account === undefined) return { error: true, status: 500 };

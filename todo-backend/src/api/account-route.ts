@@ -15,6 +15,7 @@ class AccountRoute extends RouterAbstract {
   
   private setRoutes(): void {
     this.router.get('/:name', this.findAccountByName);
+    this.router.delete('/:name', this.deleteAccount);
     this.router.put('/:name/password', this.updatePasswordByName);
     this.router.put('/:name/name', this.updateName);
   }
@@ -60,6 +61,18 @@ class AccountRoute extends RouterAbstract {
     return res.sendStatus(204);
   }
   
+  private async deleteAccount(req: Request, res: Response): Promise<Response> {
+    const name = req.body.name;
+    const password = req.body.password;
+    
+    const result = await AccountController.validateAccount(name, password);
+    if (result.error || result.account === undefined) return res.sendStatus(result.status);
+  
+    const remove = await AccountController.removeAccount(name);
+    if (remove.error) return res.sendStatus(500);
+  
+    return res.sendStatus(204);
+  }
 }
 
 export default new AccountRoute;
