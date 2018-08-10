@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import * as request from 'supertest'
+
 import App from '../src/app'
 
 const app = new App();

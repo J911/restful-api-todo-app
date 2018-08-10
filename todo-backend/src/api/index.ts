@@ -1,5 +1,4 @@
 import RouterAbstract from '../router-abstract'
-
 import AuthRoute from "./auth-route"
 import AccountRoute from "./account-route"
 import TodoRoute from "./todo-route"

@@ -1,5 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 import * as jwt from 'jsonwebtoken'
+
 import jwtConfig from '../config/jwt-config'
 
 export const tokenValidationCheck = (req: Request, res: Response, next: NextFunction): void => {

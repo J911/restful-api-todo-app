@@ -1,7 +1,6 @@
 import {Request, Response} from 'express'
 
 import RouterAbstract from '../router-abstract'
-
 import AuthController from "../controller/auth-controller";
 
 class AuthRoute extends RouterAbstract {

@@ -1,7 +1,6 @@
 import {Request, Response} from 'express'
 
 import RouterAbstract from '../router-abstract'
-
 import AccountController from "../controller/account-controller";
 
 class AccountRoute extends RouterAbstract {

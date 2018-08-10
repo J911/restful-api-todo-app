@@ -1,5 +1,4 @@
 import RouterAbstract from '../router-abstract'
-
 import * as AuthMiddleWare from './auth-middleware'
 
 class Middleware extends RouterAbstract {

@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken'
-import jwtConfig from '../config/jwt-config'
 
+import jwtConfig from '../config/jwt-config'
 import AccountController from './account-controller'
 import {IResponse} from "../interface/response-model";
 
