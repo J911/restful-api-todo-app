@@ -36,7 +36,14 @@ class TodoRoute extends RouterAbstract {
   }
   
   private async createTodo(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const title = req.body.title || '';
+    const contents = req.body.contents || '';
+    const accountId = req.body.accountId;
+    
+    const result = await TodoController.create({title, contents}, accountId);
+    if (result.error) return res.sendStatus(result.status);
+    
+    return res.sendStatus(201);
   }
   
   private async updateTodoTitleById(req: Request, res: Response): Promise<Response> {

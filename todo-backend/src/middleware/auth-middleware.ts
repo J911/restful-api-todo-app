@@ -14,6 +14,7 @@ export const tokenValidationCheck = (req: Request, res: Response, next: NextFunc
       res.sendStatus(500);
       return;
     }
+    req.body.accountId = decoded.id;
     next();
   });
 };
