@@ -1,55 +1,42 @@
-import {Request, Response} from 'express'
 import {hashSync, compareSync} from 'bcryptjs'
 import * as jwt from 'jsonwebtoken'
 import jwtConfig from '../config/jwt-config'
 
-import {IAccount} from '../models/account-model'
 import AccountController from './account-controller'
+import {IResponse} from "../interface/response-model";
 
 class AuthController {
   
   constructor() {
   }
   
-  public async signin(req: Request, res: Response): Promise<Response> {
-    const name = req.body.name;
-    const password = req.body.password;
-  
-    if (name === undefined || password === undefined) return res.sendStatus(400);
-  
-    let account: IAccount;
+  public async signin(name: string, password: string): Promise<IResponse> {
+    if (name === undefined || password === undefined)  return { error: true, status: 400 };
     
-    try { account = await AccountController.findByName(name) }
-    catch (e) { return res.sendStatus(500) }
+    const result = await AccountController.findByName(name);
+    if (result.error || result.account === undefined) return { error: true, status: 500 };
+    if (result.account === null) return { error: true, status: 404 };
     
-    if (account === null) return res.sendStatus(404);
+    const passwordIsValid = compareSync(password, result.account.password);
+    if (!passwordIsValid) return { error: true, status: 401 };
     
-    const passwordIsValid = compareSync(password, account.password);
-    if (!passwordIsValid) return res.sendStatus(401);
-    
-    const token = jwt.sign({id: account._id}, jwtConfig.secret, {expiresIn: 86400});
-    return res.status(200).json({token: token});
+    const token = jwt.sign({id: result.account._id}, jwtConfig.secret, {expiresIn: 86400});
+    return { error: false, status: 400, token };
   }
   
-  public async signup(req: Request, res: Response): Promise<Response> {
-    const name = req.body.name;
-    const password = req.body.password;
-    
+  public async signup(name: string, password: string): Promise<IResponse> {
     const hashedPassword = hashSync(password, 8);
     
-    if (name === undefined || password === undefined) return res.sendStatus(400);
+    if (name === undefined || password === undefined) return { error: true, status: 400 };
   
-    let account: IAccount;
-  
-    try { account = await AccountController.findByName(name) }
-    catch (e) { return res.sendStatus(500) }
-  
-    if (account !== null) return res.sendStatus(409);
+    const result = await AccountController.findByName(name);
+    if (result.error) return { error: true, status: 500 };
+    if (result.account !== null) return { error: true, status: 409 };
     
-    try { await AccountController.create(name, hashedPassword) }
-    catch (e) { res.sendStatus(500) }
+    const createAccount = await AccountController.create(name, hashedPassword);
+    if (createAccount.error) return { error: true, status: 500 };
     
-    return res.sendStatus(201);
+    return { error: false, status: 201 };
   }
   
 }
