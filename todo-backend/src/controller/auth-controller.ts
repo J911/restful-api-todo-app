@@ -16,7 +16,7 @@ class AuthController {
     if (result.error || result.account == undefined) return { error: true, status: result.status };
     
     const token = jwt.sign({id: result.account._id}, jwtConfig.secret, {expiresIn: 86400});
-    return { error: false, status: 400, token };
+    return { error: false, status: 200, token };
   }
   
   public async signup(name: string, password: string): Promise<IResponse> {
