@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface ITodo extends mongoose.Document {
   _id: string,
+  accountId: string,
   title: string,
   contents: string,
   status: string,
@@ -9,6 +10,7 @@ export interface ITodo extends mongoose.Document {
 }
 
 const TodoSchema = new mongoose.Schema ({
+  accountId: String,
   title: String,
   contents: String,
   status: String,
