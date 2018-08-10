@@ -42,7 +42,7 @@ class AccountRoute extends RouterAbstract {
     if (result.error || result.account === undefined) return res.sendStatus(result.status);
     
     const update = await AccountController.updatePasswordByName(name, newPassword);
-    if (update.error) return res.sendStatus(500);
+    if (update.error) return res.sendStatus(update.status);
     
     return res.sendStatus(204);
   }
@@ -56,7 +56,7 @@ class AccountRoute extends RouterAbstract {
     if (result.error || result.account === undefined) return res.sendStatus(result.status);
     
     const update = await AccountController.updateName(name, newName);
-    if (update.error) return res.sendStatus(500);
+    if (update.error) return res.sendStatus(update.status);
     
     return res.sendStatus(204);
   }
