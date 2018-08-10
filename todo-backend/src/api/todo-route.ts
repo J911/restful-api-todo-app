@@ -65,15 +65,36 @@ class TodoRoute extends RouterAbstract {
   }
   
   private async updateTodoTitleById(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const title = req.body.title;
+    const todoId = req.params.todoId;
+    const accountId = req.body.accountId;
+  
+    const update = await TodoController.updateTitleById(title, todoId, accountId);
+    if (update.error) return res.sendStatus(update.status);
+  
+    return res.sendStatus(204);
   }
   
   private async updateTodoContentsById(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const contents = req.body.contents;
+    const todoId = req.params.todoId;
+    const accountId = req.body.accountId;
+  
+    const update = await TodoController.updateContentsById(contents, todoId, accountId);
+    if (update.error) return res.sendStatus(update.status);
+  
+    return res.sendStatus(204);
   }
   
   private async updateTodoStatusById(req: Request, res: Response): Promise<Response> {
-    return res.sendStatus(500);
+    const status = req.body.status;
+    const todoId = req.params.todoId;
+    const accountId = req.body.accountId;
+  
+    const update = await TodoController.updateStatusById(status, todoId, accountId);
+    if (update.error) return res.sendStatus(update.status);
+  
+    return res.sendStatus(204);
   }
   
 }

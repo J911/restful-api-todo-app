@@ -5,7 +5,10 @@ import {IResponse} from "../interface/response-model"
 
 class TodoController {
   
+  private status: Array<string>;
+  
   constructor() {
+    this.status = ['doing', 'done', 'pending', 'cancel'];
   }
   
   public async findAll(accountId: string): Promise<IResponse> {
@@ -54,6 +57,39 @@ class TodoController {
     }
     catch (e) { return { error: true, status: 500 } }
     return { error: false, status: 201 };
+  }
+  
+  public async updateTitleById(title: string, todoId: string, accountId: string): Promise<IResponse> {
+    if (accountId === undefined || title == undefined || todoId == undefined) return { error: true, status:400 };
+    if (!MongoTypes.ObjectId.isValid(todoId)) return { error: true, status:400 };
+  
+    try { await Todo.update({_id: todoId, accountId}, { $set: { title } }) }
+    catch (e) { return { error: true, status: 500 } }
+    return { error: false, status: 204 };
+  }
+  
+  public async updateContentsById(contents: string, todoId: string, accountId: string): Promise<IResponse> {
+    if (accountId === undefined || contents == undefined || todoId == undefined) return { error: true, status:400 };
+    if (!MongoTypes.ObjectId.isValid(todoId)) return { error: true, status:400 };
+    
+    try { await Todo.update({_id: todoId, accountId}, { $set: { contents } }) }
+    catch (e) { return { error: true, status: 500 } }
+    return { error: false, status: 204 };
+  }
+  
+  public async updateStatusById(status: string, todoId: string, accountId: string): Promise<IResponse> {
+    if (accountId === undefined || status == undefined || todoId == undefined) return { error: true, status:400 };
+    if (!MongoTypes.ObjectId.isValid(todoId)) return { error: true, status:400 };
+    
+    if (!this.checkStatus(status)) return {error: true, status:400};
+    try { await Todo.update({_id: todoId, accountId}, { $set: { status } }) }
+    catch (e) { return { error: true, status: 500 } }
+    return { error: false, status: 204 };
+  }
+  
+  private checkStatus(status: string): boolean {
+    if (this.status.indexOf(status) === -1) return false;
+    return true;
   }
 }
 
