@@ -16,7 +16,7 @@ class Api extends RouterAbstract {
   
   private setRoutes(): void {
     this.router.use('/auth', AuthRoute.route);
-    this.router.use('/account', AccountRoute.route);
+    this.router.use('/accounts', AccountRoute.route);
     this.router.use('/auth', TodoRoute.route);
   }
   
