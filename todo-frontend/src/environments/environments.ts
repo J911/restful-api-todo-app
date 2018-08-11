@@ -1,3 +1,3 @@
-{
-  "apiBaseUrl": "/api/v1"
-}
+export default {
+  'apiBaseURI': '/api/v1'
+};

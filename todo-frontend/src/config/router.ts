@@ -1,19 +1,27 @@
 import VueRouter from 'vue-router'
-import Home from '../spa/home.vue'
+import HomeComponent from '../spa/home-component.vue'
+import SignInComponent from '../spa/auth/sign-in-component.vue'
 
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: HomeComponent,
     meta: {
-      title: 'Todo',
+      title: 'Todo'
+    }
+  },
+  {
+    path: '/auth/sign-in',
+    component: SignInComponent,
+    meta: {
+      title: 'Sign In - Todo'
     }
   }
 ]
 
 const router = new VueRouter({
   scrollBehavior() {
-    return {x: 0, y: 0};
+    return { x: 0, y: 0 }
   },
   mode: 'history',
   routes
@@ -21,9 +29,9 @@ const router = new VueRouter({
 
 router.beforeEach(function (to, from, next) {
   if (to.meta && to.meta.title) {
-    document.title = to.meta.title;
+    document.title = to.meta.title
   }
-  return next();
-});
+  return next()
+})
 
 export default router
