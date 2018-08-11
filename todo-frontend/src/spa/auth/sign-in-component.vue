@@ -1,5 +1,5 @@
 <template>
-    <div id="homeComponent">
+    <div id="signInComponent">
 
     </div>
 </template>
@@ -7,11 +7,11 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
 
-  @Component({})
-  export default class Home extends Vue {
+  @Component
+  export default class SignInComponent extends Vue {
 
   }
 </script>
 <style>
-    @import '../style/spa/home.css';
+    @import '../../style/spa/auth/sign-in.css';
 </style>

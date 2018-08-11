@@ -1,6 +1,7 @@
 import * as express from 'express'
 import * as bodyParser from "body-parser"
-import * as mongoose from 'mongoose';
+import * as mongoose from 'mongoose'
+import * as path from 'path'
 
 import Api from './api'
 import Middleware from './middleware'
@@ -22,7 +23,7 @@ export default class App {
     
     this.connectDatabase();
     this.setMiddleware();
-    this.setApi();
+    this.setRoute();
   }
   
   private connectDatabase(): void {
@@ -36,8 +37,10 @@ export default class App {
     this.app.use('/api/v1', Middleware.route);
   }
   
-  private setApi(): void {
+  private setRoute(): void {
     this.app.use('/api/v1', Api.route);
+    this.app.use('*', (req: express.Request, res: express.Response) =>
+      res.sendFile(path.join(__dirname, '../../todo-frontend/dist/index.html')));
   }
   
   public listen(port: number = 3000): void {
