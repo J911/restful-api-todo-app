@@ -14,7 +14,8 @@ start project: 2018.08.02
 
 ## Try
 
-curl
+See a [api-document](https://github.com/J911/RESTful-todo-app/blob/master/docs/api-document.md)
+
 ```
 curl -X POST \
   http://todo-api.j911.me/api/v1/auth/sign-in \
