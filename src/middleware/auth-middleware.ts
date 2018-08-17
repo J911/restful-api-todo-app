@@ -11,7 +11,7 @@ export const tokenValidationCheck = (req: Request, res: Response, next: NextFunc
   }
   jwt.verify(token, jwtConfig.secret, function (err, decoded) {
     if (err) {
-      res.sendStatus(500);
+      res.sendStatus(403);
       return;
     }
     req.body.accountId = decoded.id;

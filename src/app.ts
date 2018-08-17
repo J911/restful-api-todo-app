@@ -1,9 +1,11 @@
 import * as express from 'express'
 import * as bodyParser from "body-parser"
 import * as mongoose from 'mongoose'
+import * as swaggerUi from 'swagger-ui-express'
 
 import Api from './api'
 import Middleware from './middleware'
+import swaggerSpec from './config/swagger-config'
 
 import {config} from 'dotenv'
 
@@ -38,6 +40,8 @@ export default class App {
   
   private setRoute(): void {
     this.app.use('/api/v1', Api.route);
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    this.app.use('/', (req, res) => res.redirect('/api-docs'));
   }
   
   public listen(port: number = 3000): void {

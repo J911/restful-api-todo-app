@@ -19,7 +19,36 @@ class AccountRoute extends RouterAbstract {
     this.router.put('/:name/password', this.updatePasswordByName);
     this.router.put('/:name/name', this.updateName);
   }
-  
+  /**
+    * @swagger
+    * /accounts/{name}:
+    *   get:
+    *     description: gets account by account name
+    *     produces:
+    *       - application/json
+    *     parameters:
+    *       - name: x-access-token
+    *         in: header
+    *         description: token to be passed as a header
+    *         required: true
+    *         type: string
+    *       - name: "name"
+    *         in: "path"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *     responses:
+    *       200:
+    *         description: found
+    *       400:
+    *         description: bad request
+    *       401:
+    *         description: require token
+    *       403:
+    *         description: forbidden
+    *       500:
+    *         description: server error
+    */
   private async findAccountByName(req: Request, res: Response): Promise<Response> {
     const name = req.params.name;
     
@@ -32,7 +61,51 @@ class AccountRoute extends RouterAbstract {
       password: null
     });
   }
-  
+  /**
+    * @swagger
+    * /accounts/{name}/password:
+    *   put:
+    *     description: updates account name
+    *     produces:
+    *       - application/json
+    *     parameters:
+    *       - name: x-access-token
+    *         in: header
+    *         description: token to be passed as a header
+    *         required: true
+    *         type: string
+    *       - name: "name"
+    *         in: "path"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "name"
+    *         in: "formData"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "password"
+    *         in: "formData"
+    *         description: "account's password"
+    *         required: true
+    *         type: "string"
+    *       - name: "newPassword"
+    *         in: "formData"
+    *         description: "new password"
+    *         required: true
+    *         type: "string"
+    *     responses:
+    *       204:
+    *         description: update
+    *       400:
+    *         description: bad request
+    *       401:
+    *         description: require token
+    *       403:
+    *         description: forbidden
+    *       500:
+    *         description: server error
+    */
   private async updatePasswordByName(req: Request, res: Response): Promise<Response> {
     const name = req.body.name;
     const password = req.body.password;
@@ -47,6 +120,51 @@ class AccountRoute extends RouterAbstract {
     return res.sendStatus(204);
   }
   
+  /**
+    * @swagger
+    * /accounts/{name}/password:
+    *   put:
+    *     description: updates account name
+    *     produces:
+    *       - application/json
+    *     parameters:
+    *       - name: x-access-token
+    *         in: header
+    *         description: token to be passed as a header
+    *         required: true
+    *         type: string
+    *       - name: "name"
+    *         in: "path"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "name"
+    *         in: "formData"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "password"
+    *         in: "formData"
+    *         description: "account's password"
+    *         required: true
+    *         type: "string"
+    *       - name: "newName"
+    *         in: "formData"
+    *         description: "new name"
+    *         required: true
+    *         type: "string"
+    *     responses:
+    *       204:
+    *         description: update
+    *       400:
+    *         description: bad request
+    *       401:
+    *         description: require token
+    *       403:
+    *         description: forbidden
+    *       500:
+    *         description: server error
+    */
   private async updateName(req: Request, res: Response): Promise<Response> {
     const name = req.body.name;
     const newName = req.body.newName;
@@ -61,6 +179,46 @@ class AccountRoute extends RouterAbstract {
     return res.sendStatus(204);
   }
   
+  /**
+    * @swagger
+    * /accounts/{name}/delete:
+    *   delete:
+    *     description: deletes account
+    *     produces:
+    *       - application/json
+    *     parameters:
+    *       - name: x-access-token
+    *         in: header
+    *         description: token to be passed as a header
+    *         required: true
+    *         type: string
+    *       - name: "name"
+    *         in: "path"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "name"
+    *         in: "formData"
+    *         description: "account's name"
+    *         required: true
+    *         type: "string"
+    *       - name: "password"
+    *         in: "formData"
+    *         description: "account's password"
+    *         required: true
+    *         type: "string"
+    *     responses:
+    *       204:
+    *         description: delete
+    *       400:
+    *         description: bad request
+    *       401:
+    *         description: require token
+    *       403:
+    *         description: forbidden
+    *       500:
+    *         description: server error
+    */
   private async deleteAccount(req: Request, res: Response): Promise<Response> {
     const name = req.body.name;
     const password = req.body.password;
