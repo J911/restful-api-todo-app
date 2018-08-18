@@ -29,3 +29,4 @@ curl -X POST \
 - monodb
 - jwt
 - typescript
+- swagger
