@@ -11,7 +11,7 @@ end project: 2018.08.15
 [api-document](https://github.com/J911/RESTful-todo-app/blob/master/docs/api-document.md)
 
 ## API Server
-[http://todo-api.j911.me](http://todo-api.j911.me/)
+[http://todo-api.j911.me/api-docs/](http://todo-api.j911.me/api-docs/)
 
 ## Try
 
