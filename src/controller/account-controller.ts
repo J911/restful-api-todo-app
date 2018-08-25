@@ -11,7 +11,7 @@ class AccountController {
     if (name === undefined) return { error: true, status: 400 };
     
     let account: IAccount;
-    try { account = await Account.findOne({name}) }
+    try { account = await Account.findOne({ name }) }
     catch (e) { return { error: true, status: 500 } }
     return { error: false, status: 200, account };
   }
@@ -20,7 +20,7 @@ class AccountController {
     if (name === undefined || password === undefined) return { error: true, status: 400 };
     
     const hashedPassword = hashSync(password, 8);
-    try { await Account.create({name, password: hashedPassword}) }
+    try { await Account.create({ name, password: hashedPassword }) }
     catch (e) { return { error: true, status: 500 } }
     return { error: false, status: 201 };
   }
